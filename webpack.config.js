@@ -12,6 +12,14 @@ module.exports = {
       { test: /\.(js)$/, use: 'babel-loader' }
     ]
   },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/api': '' }
+      }
+    }
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js'
