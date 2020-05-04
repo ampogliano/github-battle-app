@@ -1,5 +1,3 @@
-// const params = "THIS IS A STRING"
-
 function getErrorMsg(message, username) {
   if (message === 'Not Found') {
     return `${username} doesn't exist`
@@ -7,8 +5,6 @@ function getErrorMsg(message, username) {
 
   return message
 }
-
-
 
 function getProfile(username) {
   return fetch('api/profile', {
@@ -26,8 +22,6 @@ function getProfile(username) {
     })
 }
 
-
-
 function getRepos(username) {
   return fetch('api/repos', {
     method: 'POST',
@@ -44,8 +38,6 @@ function getRepos(username) {
     })
 }
 
-
-
 function getUserData(player) {
   return Promise.all([
     getProfile(player),
@@ -57,13 +49,9 @@ function getUserData(player) {
     }))
 }
 
-
-
 function calculateScore(followers, repos) {
   return (followers * 3) + getStarCount(repos)
 }
-
-
 
 function getStarCount(repos) {
   return repos.reduce((count, { stargazers_count }) => {
@@ -71,15 +59,11 @@ function getStarCount(repos) {
   }, 0)
 }
 
-
-
 function sortPlayers(players) {
   return players.sort((a, b) => {
-    b.score - a.score
+    return b.score - a.score
   })
 }
-
-
 
 export function battle(players) {
   return Promise.all([

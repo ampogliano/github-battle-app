@@ -109,6 +109,20 @@ li {
   color: inherit;
 }
 
+.card {
+  width: 250px;
+  margin: 10px 0;
+  padding: 20px;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card img {
+  margin-bottom: 8px;
+}
+
 .bg-light {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 3px;
@@ -230,5 +244,11 @@ li {
 
 .btn-space {
   margin: 40px auto;
+}
+
+.error {
+  color: #ff1616;
+  font-size: 20px;
+  margin: 50px 0;
 }
 
