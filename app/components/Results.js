@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { battle } from '../../utils/api';
+import { battle } from '../utils/api';
 import { FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser } from 'react-icons/fa';
 import Card from './Card';
 import Loading from './Loading';
+import Tooltip from './Tooltip';
 
 
 
@@ -16,14 +17,18 @@ function ProfileList({ profile }) {
       </li>
       {profile.location && (
         <li>
-          <FaCompass color='rgb(144, 116, 255)' size={22} />
-          {profile.location}
+          <Tooltip text='User Location'>
+            <FaCompass color='rgb(144, 116, 255)' size={22} />
+            {profile.location}
+          </Tooltip>
         </li>
       )}
       {profile.company && (
         <li>
-          <FaBriefcase color='#795548' size={22} />
-          {profile.company}
+          <Tooltip text='User Company'>
+            <FaBriefcase color='#795548' size={22} />
+            {profile.company}
+          </Tooltip>
         </li>
       )}
       <li>
@@ -56,7 +61,7 @@ export default class Results extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { playerOne, playerTwo } = this.props
 
     battle([playerOne, playerTwo])
