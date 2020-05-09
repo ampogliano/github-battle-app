@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FetchPopularRepos } from '../utils/api';
+import { fetchPopularRepos } from '../utils/api';
 import { FaUser, FaStar, FaCodeBranch, FaExclamationTriangle } from 'react-icons/fa';
 import Card from './Card';
 import Loading from './Loading';
@@ -119,7 +119,7 @@ export default class Popular extends React.Component {
     })
 
     if (!this.state.repos[selectedLanguage]) {
-      FetchPopularRepos(selectedLanguage)
+      fetchPopularRepos(selectedLanguage)
         .then(data => {
           this.setState(({ repos }) => ({
             repos: {
@@ -154,7 +154,7 @@ export default class Popular extends React.Component {
           onUpdateLanguage={this.updateLanguage}
         />
 
-        {this.isLoading() && <Loading />}
+        {this.isLoading() && <Loading text='Fetching Repos'/>}
 
         {error && <p className='center-text error'>{error}</p>}
 

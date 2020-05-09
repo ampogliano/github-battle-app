@@ -18,11 +18,13 @@ module.exports = {
         target: 'http://localhost:3000',
         pathRewrite: { '^/api': '' }
       }
-    }
+    },
+    historyApiFallback: true
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
