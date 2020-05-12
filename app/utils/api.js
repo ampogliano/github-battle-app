@@ -13,11 +13,9 @@ function getProfile(username) {
     body: JSON.stringify({ 'username': username })
   })
     .then(res => {
-  
       return res.json()
     })
     .then(profile => {
-  
       if (profile.message) {
         throw new Error(getErrorMsg(profile.message, username))
       }

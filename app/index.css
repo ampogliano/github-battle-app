@@ -288,3 +288,15 @@ li {
   background: #292929;
   color: #4a4a4a;
 }
+
+.not-found, .tiny {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  color: #ff1616;
+}
+
+.tiny {
+  font-size: .5em;
+}
+
