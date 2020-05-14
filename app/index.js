@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Popular from './components/Popular';
-import Battle from './components/Battle';
-import Results from './components/Results';
-import NotFound from './components/NotFound';
 import { ThemeProvider } from './contexts/theme';
-import Nav from './components/Nav';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Routes from './components/Routes'
+
 
 
 
@@ -23,10 +19,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <ThemeProvider value={this.state}>
-          <div className={this.state.theme}>
-            <div className='container'>
+      <ThemeProvider value={this.state}>
+        <div className={this.state.theme}>
+          <Routes />
+          {/* <div className='container'>
               <Nav />
 
               <Switch>
@@ -34,11 +30,10 @@ class App extends React.Component {
                 <Route exact path='/battle' component={Battle} />
                 <Route path='/battle/results' component={Results} />
                 <Route component={NotFound} />
-              </Switch>
-            </div>
-          </div>
-        </ThemeProvider>
-      </Router>
+              </Switch> */}
+        </div>
+        {/* </div> */}
+      </ThemeProvider>
     )
   }
 }

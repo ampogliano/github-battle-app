@@ -95,6 +95,8 @@ ReposGrid.propTypes = {
 
 // Popular class component
 export default class Popular extends React.Component {
+  _isMounted = false;
+
   state = {
     selectedLanguage: 'All',
     repos: {},
@@ -102,7 +104,12 @@ export default class Popular extends React.Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.updateLanguage(this.state.selectedLanguage)
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   updateLanguage = (selectedLanguage) => {
@@ -111,22 +118,26 @@ export default class Popular extends React.Component {
       error: null
     })
 
-    if (!this.state.repos[selectedLanguage]) {
+    if (!this.state.repos[selectedLanguage] && this._isMounted) {
       fetchPopularRepos(selectedLanguage)
         .then(data => {
-          this.setState(({ repos }) => ({
-            repos: {
-              ...repos,
-              [selectedLanguage]: data,
-            }
-          }))
+          if (this._isMounted) {
+            this.setState(({ repos }) => ({
+              repos: {
+                ...repos,
+                [selectedLanguage]: data,
+              }
+            }))
+          }
         })
         .catch(() => {
           console.warn('Error fetching repos: ')
 
-          this.setState({
-            error: 'There was an error fetching the repositories.'
-          })
+          if (this._isMounted) {
+            this.setState({
+              error: 'There was an error fetching the repositories.'
+            })
+          }
         })
     }
   }
