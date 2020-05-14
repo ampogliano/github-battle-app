@@ -12,6 +12,7 @@ module.exports = {
       { test: /\.(js)$/, use: 'babel-loader' }
     ]
   },
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devServer: {
     proxy: {
       '/api': {
