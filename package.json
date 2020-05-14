@@ -12,6 +12,9 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
     ]
   },
   "author": "Anthony Pogliano (via Tyler McGinnis)",
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",

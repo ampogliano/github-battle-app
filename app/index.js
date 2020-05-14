@@ -10,17 +10,14 @@ import Nav from './components/Nav';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      theme: 'light',
-      toggleTheme: () => {
-        this.setState(({ theme }) => ({
-          theme: theme === 'light' ? 'dark' : 'light'
-        }))
-      }
+class App extends React.Component {
+  state = {
+    theme: 'light',
+    toggleTheme: () => {
+      this.setState(({ theme }) => ({
+        theme: theme === 'light' ? 'dark' : 'light'
+      }))
     }
   }
 
