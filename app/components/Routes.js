@@ -1,10 +1,12 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
 import Nav from './Nav';
-import Popular from './Popular';
-import Battle from './Battle';
-import Results from './Results';
-import NotFound from './NotFound';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Loading from './Loading';
+
+const Popular = React.lazy(() => import('./Popular'));
+const Battle = React.lazy(() => import('./Battle'));
+const Results = React.lazy(() => import('./Results'));
+const NotFound = React.lazy(() => import('./NotFound'));
 
 
 
@@ -14,12 +16,14 @@ export default class Routes extends React.Component {
       <Router>
         <div className='container'>
           <Nav />
-          <Switch>
-            <Route exact path='/' component={Popular} />
-            <Route exact path='/battle' component={Battle} />
-            <Route path='/battle/results' component={Results} />
-            <Route component={NotFound} />
-          </Switch>
+          <React.Suspense fallback={<Loading />}>
+            <Switch>
+              <Route exact path='/' component={Popular} />
+              <Route exact path='/battle' component={Battle} />
+              <Route path='/battle/results' component={Results} />
+              <Route component={NotFound} />
+            </Switch>
+          </React.Suspense>
         </div>
       </Router>
     )
