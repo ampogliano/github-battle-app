@@ -4,7 +4,7 @@
   "description": "An application that will compare and 'battle' two github profiles, as well as display popular github projects and repos in a variety of popular programming languages.",
   "main": "index.js",
   "scripts": {
-    "build": "concurrently \"NODE_ENV='production'\" \"webpack\" \"npm run server\"",
+    "build": "NODE_ENV='production' webpack",
     "build-for-windows": "SET NODE_ENV='production' && webpack",
     "start": "concurrently \"webpack-dev-server\" \"npm run server\"",
     "server": "nodemon server/index.js"
