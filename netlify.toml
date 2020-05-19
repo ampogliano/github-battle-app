@@ -1,4 +1,4 @@
 [build]
-  command = "npm install && npm run build"
+  command = "npm install && npm run build-for-netlify"
   functions = "functions-build"
   publish = "dist"
