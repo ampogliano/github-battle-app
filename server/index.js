@@ -6,10 +6,12 @@ require('dotenv').config();
 
 // Initialize app
 const app = express();
+const router = express.Router();
 const port = process.env.PORT || 3000;
 
 // Configuration
 app.use(bodyParser.json({ type: 'application/json' }));
+app.use('/.netlify/functions/index', router);
 
 // Constants
 const id = process.env.GITHUB_CLIENT_ID;
@@ -19,7 +21,7 @@ const params = `?client_id=${id}&client_secret=${secret}`
 
 
 // Route(s)
-app.post('/profile', (req, res) => {
+router.post('/profile', (req, res) => {
   const { username } = req.body;
   const endpoint = `https://api.github.com/users/${username}${params}`;
 
@@ -39,7 +41,7 @@ app.post('/profile', (req, res) => {
   return
 })
 
-app.post('/repos', (req, res) => {
+router.post('/repos', (req, res) => {
   const { username } = req.body;
   const endpoint = `https://api.github.com/users/${username}/repos${params}&per_page=100`;
 
