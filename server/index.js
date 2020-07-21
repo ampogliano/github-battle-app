@@ -11,7 +11,11 @@ const port = process.env.PORT || 3000;
 
 // Configuration
 app.use(bodyParser.json({ type: 'application/json' }));
-app.use('/.netlify/functions/index', router);
+const routerBasePath = (process.env.NODE_ENV === 'development')
+  ? `/index`
+  : `/.netlify/functions/index` 
+
+app.use(routerBasePath, router);
 
 // Constants
 const id = process.env.GITHUB_CLIENT_ID;
@@ -22,26 +26,28 @@ const params = `?client_id=${id}&client_secret=${secret}`
 
 // Route(s)
 router.post('/profile', (req, res) => {
+  console.log('Request URL: ', req.url)
   const { username } = req.body;
   const endpoint = `https://api.github.com/users/${username}${params}`;
-
+  
   axios({
     method: 'get',
     url: endpoint,
   })
-    .then(response => {
-      res.status(200)
-      res.send(response.data)
-    })
-    .catch(error => {
-      console.log('Error with Axios profile res: ', error)
-      res.send({ error })
-    })
-
+  .then(response => {
+    res.status(200)
+    res.send(response.data)
+  })
+  .catch(error => {
+    console.log('Error with Axios profile res: ', error)
+    res.send({ error })
+  })
+  
   return
 })
 
 router.post('/repos', (req, res) => {
+  console.log('Request URL: ', req.url)
   const { username } = req.body;
   const endpoint = `https://api.github.com/users/${username}/repos${params}&per_page=100`;
 

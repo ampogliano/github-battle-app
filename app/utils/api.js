@@ -7,25 +7,25 @@ function getErrorMsg(message, username) {
 }
 
 function getProfile(username) {
-  return fetch('/profile', {
+  return fetch('/api/profile', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'username': username })
   })
-    .then(res => {
-      return res.json()
-    })
-    .then(profile => {
-      if (profile.message) {
-        throw new Error(getErrorMsg(profile.message, username))
-      }
-  
-      return profile
-    })
+  .then(res => {
+    return res.json()
+  })
+  .then(profile => {
+    if (profile.message) {
+      throw new Error(getErrorMsg(profile.message, username))
+    }
+    
+    return profile
+  })
 }
 
 function getRepos(username) {
-  return fetch('/repos', {
+  return fetch('/api/repos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'username': username })
