@@ -10,7 +10,6 @@ const port = process.env.PORT || 3000;
 
 // Configuration
 app.use(bodyParser.json({ type: 'application/json' }));
-// app.use('/.netlify/functions/server', app);
 
 // Constants
 const id = process.env.GITHUB_CLIENT_ID;
@@ -72,4 +71,5 @@ process.on('SIGINT', () => {
 })
 
 // Serverless
+// app.use('/.netlify/functions/index', router);
 module.exports.handler = serverless(app);
