@@ -7,7 +7,7 @@ function getErrorMsg(message, username) {
 }
 
 function getProfile(username) {
-  return fetch('/api/profile', {
+  return fetch('/profile', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'username': username })
@@ -25,7 +25,7 @@ function getProfile(username) {
 }
 
 function getRepos(username) {
-  return fetch('/api/repos', {
+  return fetch('/repos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'username': username })
