@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json({ type: 'application/json' }));
 const routerBasePath = (process.env.NODE_ENV === 'development')
   ? `/index`
-  : `/.netlify/functions/index` 
+  : `/.netlify/functions` 
 
 app.use(routerBasePath, router);
 
