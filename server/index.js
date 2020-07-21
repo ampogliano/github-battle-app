@@ -26,7 +26,6 @@ const params = `?client_id=${id}&client_secret=${secret}`
 
 // Route(s)
 router.post('/profile', (req, res) => {
-  console.log('Request URL: ', req.url)
   const { username } = req.body;
   const endpoint = `https://api.github.com/users/${username}${params}`;
   
@@ -47,7 +46,6 @@ router.post('/profile', (req, res) => {
 })
 
 router.post('/repos', (req, res) => {
-  console.log('Request URL: ', req.url)
   const { username } = req.body;
   const endpoint = `https://api.github.com/users/${username}/repos${params}&per_page=100`;
 
