@@ -10,7 +10,7 @@
     "start": "concurrently \"webpack-dev-server\" \"npm run start:lambda\"",
     "server": "nodemon server/index.js",
     "start:lambda": "NODE_ENV='production' netlify-lambda serve ./server",
-    "build:lambda": "netlify-lambda build ./server"
+    "build:lambda": "netlify-lambda build serve ./server"
   },
   "babel": {
     "presets": [
