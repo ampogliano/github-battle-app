@@ -13,9 +13,11 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json({ type: 'application/json' }));
 const routerBasePath = (process.env.NODE_ENV === 'development')
   ? `/index`
-  : `/.netlify/functions/` 
+  : `/.netlify/functions/index` 
 
 app.use(routerBasePath, router);
+
+console.warn('Node environment: ', process.env.NODE_ENV)
 
 // Constants
 const id = process.env.GITHUB_CLIENT_ID;
