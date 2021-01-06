@@ -22,7 +22,7 @@
   "author": "Anthony Pogliano (via Tyler McGinnis)",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "body-parser": "^1.19.0",
     "prop-types": "^15.7.2",
